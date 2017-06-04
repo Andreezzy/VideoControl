@@ -20,8 +20,10 @@ $(document).ready(function(){
   );
   $("#movieForm").on('submit', function(){$('#modal1').modal('close')})
   $("#cerrar").on('click', function(){$('#modal1').modal('close')})
+    $("#agregar").on('click', function(){$('#modal1').modal('open')})
+    $("#editar").on('click', function(){$('#modal1').modal('open')})
   $('#modal1').modal();
-  
+
   $(".button-collapse").sideNav();
 
   $('.dropdown-button').dropdown({

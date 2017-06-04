@@ -84,7 +84,7 @@ class ModalFormMovie extends React.Component{
     this.setState({
       id: this.props.movie.id,
       name: this.props.movie.name,
-      generos: this.props.movie.generos,
+      generosChecked: this.props.movie.generos,
       description: this.props.movie.description,
       codigo: this.props.movie.codigo,
       tiempo: this.props.movie.tiempo,
@@ -108,8 +108,8 @@ class ModalFormMovie extends React.Component{
   render(){
     return(
       <div>
-        <a className="waves-effect waves-light btn" href="#modal1" onClick={()=>this.handleSwitchEdit(1)}><i className="material-icons left">add</i>Agregar</a>
-        <a className="waves-effect waves-light btn" href="#modal1" onClick={()=>this.handleSwitchEdit()}><i className="material-icons left">edit</i>Editar</a>
+        <a id="agregar" className="waves-effect waves-light btn" onClick={()=>this.handleSwitchEdit(1)}><i className="material-icons left">add</i>Agregar</a>
+        <a id="editar" className="waves-effect waves-light btn" onClick={()=>this.handleSwitchEdit()}><i className="material-icons left">edit</i>Editar</a>
         <a className="waves-effect waves-light btn"><i className="material-icons left">delete</i>Borrar</a>
         <br />
         <br />

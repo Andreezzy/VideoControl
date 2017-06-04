@@ -51,6 +51,9 @@ class Peliculas extends React.Component{
     this.handleInsert = this.handleInsert.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
   }
+  componentWillMount() {
+    this.props.fetchMovies();
+  }
   handleInsert(newItem){
     this.setState((prevState) => ({
       movies: prevState.movies.concat(newItem),
@@ -69,13 +72,35 @@ class Peliculas extends React.Component{
   handleEdit(e){
     //console.log("VALOR DE MOVIE => ", e)
   }
+  renderMovies(movies) {
+    console.log(movies)
+    return movies.map((movie) => {
+      return (
+        <li key={movie.id}>
+          <h3>{movie.title} - {movie.code}</h3>
+        </li>
+      );
+    });
+  }
   render(){
+
+      const { movies, loading, error } = this.props.moviesList;
+
+      if(loading) {
+        return <div className="container"><h1>Movies</h1><h3>Loading...</h3></div>
+      } else if(error) {
+        return <div className="alert alert-danger">Error: {error.message}</div>
+      }
     return(
       <div className="container">
         <h2>Peliculas</h2>
 
         <ModalFormMovie movies={this.state.movies} movie={this.state.active}handleInsert={this.handleInsert} handleEdit={this.handleEdit}/>
         <h1 onClick={()=>this.handleEdit()}>Click me!</h1>
+        <h1>Posts</h1>
+        <ul className="list-group">
+          {this.renderMovies(movies)}
+        </ul>
 
         <div className="divider"></div>
         <TableMovieComponent movies={this.state.movies} handleSelect={this.handleSelect} />
